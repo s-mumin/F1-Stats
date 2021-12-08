@@ -10,7 +10,7 @@ burgerIcon.addEventListener("click", () =>{
 // Driver Standings
 const driversStandings = async () => {
     try{
-        const res = await axios.get("http://ergast.com/api/f1/current/driverStandings.json")
+        const res = await axios.get("https://ergast.com/api/f1/current/driverStandings.json")
         const standings = res.data.MRData.StandingsTable.StandingsLists[0].DriverStandings
 
         for(var standing of standings){
@@ -55,7 +55,7 @@ driversStandings()
 
 const lastResult = async () => {
     try{
-        const res = await axios.get("http://ergast.com/api/f1/current/last/results.json")
+        const res = await axios.get("https://ergast.com/api/f1/current/last/results.json")
         const lastName = res.data.MRData.RaceTable.Races[0].Results[0].Driver.familyName
         const firstName = res.data.MRData.RaceTable.Races[0].Results[0].Driver.givenName
         const round = res.data.MRData.RaceTable.Races[0].round
@@ -91,7 +91,7 @@ lastResult()
 const constructorsStandings = async () => {
 
     try{
-        const res = await axios.get("http://ergast.com/api/f1/current/constructorStandings.json")
+        const res = await axios.get("https://ergast.com/api/f1/current/constructorStandings.json")
         // console.log(res.data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings)
         const constStandings = res.data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings
         
@@ -131,7 +131,7 @@ constructorsStandings()
 // fastest lap
 const lastFastest = async () => {
     try{
-        const res = await axios.get("http://ergast.com/api/f1/current/last/fastest/1/results.json")
+        const res = await axios.get("https://ergast.com/api/f1/current/last/fastest/1/results.json")
         // console.log(res.data.MRData.Race)
         // console.log(res.data.MRData)
         // console.log(res.data.MRData.RaceTable.round)
@@ -161,7 +161,7 @@ lastFastest()
 
 const pitStop = async () => {
     try{
-        const res = await axios.get("http://ergast.com/api/f1/current/last/pitstops.json")
+        const res = await axios.get("https://ergast.com/api/f1/current/last/pitstops.json")
 
         const stops = res.data.MRData.RaceTable.Races[0].PitStops
         const stopsArray = []
@@ -176,7 +176,7 @@ const pitStop = async () => {
             for(var eachStop of stops){
                 if(eachStop.duration == x){
 
-                    const resp = await axios.get("http://ergast.com/api/f1/current/last/results.json")
+                    const resp = await axios.get("https://ergast.com/api/f1/current/last/results.json")
             
                     const lastRes = resp.data.MRData.RaceTable.Races[0].Results
                     
@@ -229,7 +229,7 @@ driverSearchBtn.addEventListener("click", (e) =>{
 
 const driverInfo = async () => {
     try{
-        const res = await axios.get(`http://ergast.com/api/f1/drivers/${driverName.value}.json`)
+        const res = await axios.get(`https://ergast.com/api/f1/drivers/${driverName.value}.json`)
 
         const firstName = res.data.MRData.DriverTable.Drivers[0].givenName
         const lastName = res.data.MRData.DriverTable.Drivers[0].familyName
@@ -293,7 +293,7 @@ driverResultsBtn.addEventListener("click", (e) => {
 
 const driversResults = async () => {
     try{
-        const res = await axios.get(`http://ergast.com/api/f1/${driverResultsYear.value}/drivers/${driverResultsName.value}/results.json`)
+        const res = await axios.get(`https://ergast.com/api/f1/${driverResultsYear.value}/drivers/${driverResultsName.value}/results.json`)
         // console.log(res.data.MRData)
         const races = res.data.MRData.RaceTable.Races
 
@@ -355,7 +355,7 @@ raceResultAndRoundSubmit.addEventListener("click", (e) => {
 // Race results of a specific round
 const raceResultsAndRound = async () => {
     try{
-        const res = await axios.get(`http://ergast.com/api/f1/${raceResultYear.value}/${raceResultRound.value}/results.json`)
+        const res = await axios.get(`https://ergast.com/api/f1/${raceResultYear.value}/${raceResultRound.value}/results.json`)
 
         const raceClassification = res.data.MRData.RaceTable.Races[0].Results
         for(var raceClass of raceClassification){
@@ -413,7 +413,7 @@ qualiSubmit.addEventListener("click", (e) => {
 
 const qualifying = async () => {
     try{
-        const res = await axios.get(`http://ergast.com/api/f1/${qualiResultYear.value}/${qualiResultRound.value}/qualifying.json`)
+        const res = await axios.get(`https://ergast.com/api/f1/${qualiResultYear.value}/${qualiResultRound.value}/qualifying.json`)
 
         const qualiResults = res.data.MRData.RaceTable.Races[0].QualifyingResults
 
@@ -455,7 +455,7 @@ driverChampSubmit.addEventListener("click", (e) => {
 
 const driversChamps = async () =>{
     try{
-        const res = await axios.get("http://ergast.com/api/f1/driverStandings/1.json")
+        const res = await axios.get("https://ergast.com/api/f1/driverStandings/1.json")
         const standingsTable = res.data.MRData.StandingsTable.StandingsLists
 
         for(var standingTable of standingsTable){
@@ -498,7 +498,7 @@ teamChampSubmit.addEventListener("click", (e) =>{
 //World constructor champions
 const constructorChamps = async () =>{
     try{
-        const res = await axios.get("http://ergast.com/api/f1/constructorStandings/1.json")
+        const res = await axios.get("https://ergast.com/api/f1/constructorStandings/1.json")
         // console.log(res.data.MRData)
 
         // console.log(res.data.MRData.StandingsTable.StandingsLists)
@@ -543,7 +543,7 @@ driverChampSeasonSubmit.addEventListener("click", (e) =>{
 
 const yearEndDrivers = async () => {
     try{
-        const res = await axios.get(`http://ergast.com/api/f1/${driverChampSeason.value}/driverStandings.json`)       
+        const res = await axios.get(`https://ergast.com/api/f1/${driverChampSeason.value}/driverStandings.json`)       
         const driverEndStandings = res.data.MRData.StandingsTable.StandingsLists[0].DriverStandings
 
         for(var driverEndStanding of driverEndStandings){
@@ -602,7 +602,7 @@ teamChampEndSubmit.addEventListener("click", (e) =>{
 
 const yearEndConstructors = async () => {
     try{
-        const res = await axios.get(`http://ergast.com/api/f1/${teamChampEnd.value}/constructorStandings.json`)
+        const res = await axios.get(`https://ergast.com/api/f1/${teamChampEnd.value}/constructorStandings.json`)
         const teamStandings = res.data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings
 
         for(var teamStanding of teamStandings){
