@@ -1,0 +1,127 @@
+body{
+    margin: auto;
+    font-family: 'Titillium Web', sans-serif;
+}
+h1{
+    font-size: 2rem;
+}
+hr{
+    margin:auto;
+    width:80%;
+    background-color: rgb(50, 190, 206);
+}
+
+a{
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+a:hover{
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+}
+
+.columns{
+    margin:auto;
+    width:80%;
+}
+
+/* navbar */
+.navbar-brand{
+    margin-left: 20px;
+}
+
+
+/* title */
+#title{
+    margin: auto;
+    height:100vh;
+    background-image:linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)), url('../images/header.jpg') ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    margin-bottom: 20px;
+}
+ 
+#title-text{
+    color: rgb(255, 255, 255);
+    position: absolute;
+    width:40%;
+    top: 35%;
+    right:30%
+}
+
+/* live stats */
+
+#livestats{
+    background-color:rgb(255, 255, 255);;
+    margin-bottom: 50px;
+    margin-top: 40px;
+    text-align: center
+}
+
+
+
+.tile{
+    margin-top: 80px;
+    margin:0 auto;
+    width: 95%;
+    text-align: center;
+}
+
+
+#lastWinnerPic{
+    margin-left: auto;
+    margin-right: auto;
+    height:90%;
+    width:90%;
+    border-radius: 20px;
+}
+
+#lastFastestPic{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    height:90%;
+    width:90%;
+    border-radius: 20px;
+}
+
+#lastFastestPit{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    height: 60%;
+    width: 1000%;
+}
+
+/* about */
+.about{
+    margin:auto;
+    width:80%;
+}
+#about h1{
+text-align: center;
+}
+
+input[type=text]{
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 1px solid rgb(0, 0, 0);
+  }
+
+
+/* footer */
+footer{
+    background-color: rgb(50, 190, 206);
+    color: rgb(255, 255, 255);
+    list-style: none;
+    margin-top: 40px;
+    padding: 40px 0px;
+}
+
+#footer-links{
+    list-style: none;
+    margin-left: 20px;
+}
+

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+<!-- nav -->
+    <nav class="navbar is-primary is-fixed-top">
+        <div class="navbar-brand">
+            <a class="navbar-item is-primary">
+                <h1 id="logo">Race Stats</h1>
+            </a>
+            <a class="navbar-burger" id="burger" >
+                <span></span>
+                <span></span>
+                <span></span>
+            </a>
+        </div>
+
+        <div class="navbar-menu is-primary" id="nav-links">
+            <div class="navbar-end is-primary">
+                <a class="navbar-item" href="#livestats">Live Stats</a>
+                <a class="navbar-item" href="#historicalstats">Historical Stats</a>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <!-- NAV BAR -->
+    <!-- Title -->
+    <div id="title">
+        <div id="title-text">
+            <h1>Race Stats</h1>
+            <p>Wiew current and historical Formula One statistics. This website uses the Ergast Developer API, an
+                experimental web service which provides a historical record of motor
+                racing data for non-commercial purposes. The API
+                provides data for the Formula One series, from the beginning of the world championships in 1950.</p>
+        </div>
+    </div>
+
+    <!-- Live Stats -->
+
+    <div class="about">
+        <h1>Live Stats</h1>
+        <p>Here are the live statistics including both driver's and constructor's championships.</p>
+    </div>
+    <hr>
+
+    <div id="livestats">
+
+        <div class="tile ">
+            <div class="tile is-ancestor ">
+                <div class="tile is-vertical is-8 ">
+                    <div class="tile">
+                        <div class="tile is-parent is-vertical ">
+                            <article class="tile is-child notification is-full-mobile is-full-tablet">
+                                <p class="title">Race Winner</p>
+                                <p class="subtitle">Most Recent Race</p>
+                                <figure class="image is-4by3">
+                                    <img id="lastWinnerPic" src="https://bulma.io/images/placeholders/640x480.png">
+                                </figure>
+                                <p id="lastWinner">Driver: </p>
+                                <p id="lastRound">Round: </p>
+                                <p id="lastRace">Race: </p>
+                                <p id="lastCircuit">Circuit: </p>
+                            </article>
+                            <article class="tile is-child notification is-full-mobile">
+                                <p class="title">Fastest Lap</p>
+                                <p class="subtitle">Most Recent Race</p>
+                                <p id="lastFastestDriver">Driver: </p>
+                                <p id="lastFastestTime">Time: </p>
+                                <p id="lastFastestLap">Lap: </p>
+                                <figure class="image is-4by3">
+                                    <img id="lastFastestPic" src="https://bulma.io/images/placeholders/640x480.png">
+                                </figure>
+                            </article>
+                        </div>
+                        <div class="tile is-parent">
+                            <article class="tile is-child notification">
+                                <div class="content">
+                                    <p class="title">World Driver's Championship Standings</p>
+                                    <p class="subtitle">Current Standings</p>
+                                    <table id="driverTable">
+                                        <tr>
+                                            <th>Pos</th>
+                                            <th>Driver</th>
+                                            <th>Points</th>
+                                            <th>Constructor</th>
+                                        </tr>
+                                    </table>
+                                    <div class="content">
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+                <div class="tile is-parent is-vertical">
+                    <article class="tile is-child notification ">
+                        <p class="title">World Constructor's Championship Standings</p>
+                        <p class="subtitle">Current Standings</p>
+                        <div class="content">
+                            <table id="constructorTable">
+                                <tr>
+                                    <th>Pos</th>
+                                    <th>Constructor</th>
+                                    <th>Points</th>
+                                </tr>
+                            </table>
+                        </div>
+                    </article>
+                    <article class="tile is-child notification">
+                        <p class="title">Fastest PitStop</p>
+                        <p class="subtitle">Most Recent Race</p>
+                        <p class="subtitle">From pit entry to pit exit</p>
+                        <p id="fastestDriverTeam">Constructor: </p>
+                        <p id="fastestDriverStop">Driver: </p>
+                        <p id="fastestDriverTime">Time: </p>
+                        <p id="fastestDriverStopNum">Stop Number: </p>
+                        <p id="fastestDriverLap">Lap: </p>
+                        <figure class="image is-4by3">
+                            <img id="lastFastestPit" src="https://bulma.io/images/placeholders/640x480.png">
+                        </figure>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="about" id="historicalstats">
+        <h1>Historical Stats</h1>
+        <p>Search for various Formula One statistics including driver information, results of a sdriver throughout an
+            entire season and World Constructor's Standings of every year.</p>
+    </div>
+
+    <hr>
+
+    <div class="columns">
+        <!-- Driver Info -->
+        <div class="column">
+            <h1>Driver info</h1>
+            <p>Search for a driver and see their details. Use the first name and last name for drivers with common
+                surnames(e.g Michael_Schumacher).</p>
+
+            <form action="" id="driverSearchForm">
+                <input type="text" id="driverSearchName" placeholder="Enter driver name">
+                <button id="driverSearchSubmit" class="button is-primary is-inverted is-small">Submit</button>
+            </form>
+
+            <p id="driverFullName">Full Name: </p>
+            <p id="driverCode">Code: </p>
+            <p id="driverNumber">Number: </p>
+            <p id="driverNationality">Nationality: </p>
+            <p id="driverDoB">Date of Birth: </p>
+
+        </div>
+
+        <div class="column">
+            <!-- Driver results in a year -->
+            <h1>Driver Results in a Year</h1>
+            <p>Search for the driver, select one of the years they have raced in and see all their results throughout
+                that
+                year.</p>
+
+            <form action="">
+                <input type="text" id="driverResultsName" placeholder="Enter driver name"><br>
+                <input type="number" id="driverResultsYear" name="amount" value="1950" min="1950" max="2022"><br>
+                <button id="driverNameAndYearSubmit" class="button is-primary is-inverted is-small">Search</button>
+            </form>
+
+            <table id="raceResults" class="table">
+                <tr>
+                    <th>Round</th>
+                    <th>Race</th>
+                    <th>Grid</th>
+                    <th>Pos</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- Specific race result -->
+    <div class="columns">
+        <div class="column is-half">
+
+            <h1>Race Result of Specific Round & Season</h1>
+            <p>View the race results of any specific race throughout the history of F1.</p>
+
+            <form action="">
+                <input type="number" id="raceResultYear" name="amount" value="1950" min="1950" max="2022"><br>
+                <input type="number" id="raceResultRound" name="amount" value="1" min="1" max="22"><br>
+                <button id="raceResultAndRoundSubmit" class="button is-primary is-inverted is-small">Search</button>
+            </form>
+
+            <p><span id="raceYearGP"> </span> <span id="raceYearCircuit"></span> <span id="raceYearDate"></span> </p>
+
+            <table id="raceYear" class="table">
+                <tr>
+                    <th>Pos</th>
+                    <th>Driver</th>
+                    <th>Points</th>
+                    <th>Constructor</th>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Specific qualifying result -->
+
+        <div class="column is-half">
+            <h1>Qualifying Results of Specific Round & Season</h1>
+            <p>Search for a qualifying result of any round since 1994.</p>
+
+            <form action="">
+                <input type="number" id="qualiResultYear" name="amount" value="1994" min="1994" max="2022"><br>
+                <input type="number" id="qualiResultRound" name="amount" value="1" min="1" max="23"><br>
+                <button id="qualiSubmit" class="button is-primary is-inverted is-small">Search</button>
+            </form>
+
+            <table id="qualYear" class="table">
+                <tr>
+                    <th>Pos</th>
+                    <th>Driver</th>
+                    <th>Constructor</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="columns">
+
+        <!-- wdc by year -->
+        <div class="column">
+
+            <h1>World Driver's Champions</h1>
+
+            <p>Select a year to view which driver won that year's World Driver's Championship.</p>
+
+            <form action="">
+                <input type="number" id="driverChampYear" name="amount" value="1950" min="1950" max="2022">
+                <button id="driverChampSubmit" class="button is-primary is-inverted is-small">Search</button>
+            </form>
+
+            <p id="champName">Full Name: </p>
+            <p id="champTeam">Team: </p>
+            <p id="champWins">Wins: </p>
+            <p id="champPoints">Points: </p>
+
+        </div>
+
+        <!-- wcc by year -->
+        <div class="column">
+
+            <h1>World Constructor's Champions</h1>
+
+            <p>Select a year to view which constructor won that year's World Constructor's Championship.</p>
+
+            <form action="">
+                <input type="number" id="teamChampYear" name="amount" value="1958" min="1958" max="2022">
+                <button id="teamChampSubmit" class="button is-primary is-inverted is-small">Search</button>
+            </form>
+
+            <p id="teamName">Constructor: </p>
+            <p id="teamNation">Country: </p>
+            <p id="teamWins">Wins: </p>
+            <p id="teamPoints">Points: </p>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="columns">
+
+        <!-- wdc standings of each year -->
+        <div class="column">
+            <h1>World Driver's Standings by Season</h1>
+            <p>View the final WDC standings of any season.</p>
+            <form action="">
+                <input type="number" id="driverChampSeason" name="amount" value="1950" min="1958" max="2022">
+                <button id="driverChampSeasonSubmit" class="button is-primary is-inverted is-small">Search</button>
+
+                <table id="driverChampSeasonTable" class="table">
+                    <tr>
+                        <th>Pos</th>
+                        <th>Driver</th>
+                        <th>Points</th>
+                        <th>Wins</th>
+                        <th>Constructor</th>
+                    </tr>
+                </table>
+            </form>
+        </div>
+
+        <!-- wcc standings of each year -->
+        <div class="column">
+            <h1>World Constructor's Standings by Season</h1>
+            <p>View the final WCC standings of any season.</p>
+            <form action="">
+                <input type="number" id="teamChampEnd" name="amount" value="1958" min="1958" max="2022">
+                <button id="teamChampEndSubmit" class="button is-primary is-inverted is-small">Search</button>
+            </form>
+
+            <table id="teamChampEndTable" class="table">
+                <tr>
+                    <th>Pos</th>
+                    <th>Constructor</th>
+                    <th>Points</th>
+                    <th>Wins</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <Footer>
+        <ul id="footer-links">
+            <li> <a href="http://ergast.com/mrd/">Ergast Developer API</li>
+            <li> <a
+                    href="https://documenter.getpostman.com/view/11586746/SztEa7bL#e3656dc6-a842-4a64-b1ea-8410f15d9089">Fornula
+                    One API - Postman</a></li>
+            <li> <a href="https://www.formula1.com/">Official F1 Website</li>
+        </ul>
+    </Footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="index.js" async defer></script>
+</body>
+
+</html>
