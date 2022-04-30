@@ -154,7 +154,7 @@ const lastFastest = async () => {
 
     }
     catch(e){
-        console.log("kjasfjsanafs", e)
+        console.log("fastest lap not available", e)
     }
 }
 lastFastest()
@@ -209,7 +209,7 @@ const pitStop = async () => {
 
     }
     catch(e){
-        console.log("dhsgfhdsfsj", e)
+        console.log("quickest pitstop not available", e)
     }
 }
 pitStop()
@@ -332,12 +332,12 @@ const driversResults = async () => {
         
     }
     catch(e){
-        console.log("DSfsdfsdsfsd", e)
+        console.log("count not find driver results", e)
 
     }
 }
 
-// Race results of each round
+// Race results of a spesific round and season
 const raceResultYear = document.querySelector("#raceResultYear")
 const raceResultRound = document.querySelector("#raceResultRound")
 const raceResultAndRoundSubmit = document.querySelector("#raceResultAndRoundSubmit")
@@ -395,16 +395,20 @@ const raceResultsAndRound = async () => {
         }
     }
     catch(e){
-        console.log("sorry could not find", e)
+        console.log("unable to find last race results", e)
     }
 }
 
-// qualifying round and year
+// qualifying results of spesific round and year
 const qualiResultYear = document.querySelector("#qualiResultYear")
 const qualiResultRound = document.querySelector("#qualiResultRound")
 const qualiSubmit = document.querySelector("#qualiSubmit")
 
 qualiSubmit.addEventListener("click", (e) => {
+
+    while (qualYear.rows.length > 1) {
+        qualYear.deleteRow(1);
+      }
 
     qualifying()
     
@@ -440,7 +444,7 @@ const qualifying = async () => {
         }    
     }
     catch(e){
-        console.log("Sorry! Not available", e)
+        console.log("unable to fund qualifying results", e)
     }
 }
 
@@ -482,7 +486,7 @@ const driversChamps = async () =>{
         }
     }
     catch(e){
-        console.log("sdfsdfsfsfs", e)
+        console.log("unable to find driver's champions", e)
     }
 }
 
@@ -525,7 +529,7 @@ const constructorChamps = async () =>{
 
     }
     catch(e){
-        console.log("sdfsdfsfsfs", e)
+        console.log("unable to find constructos's champions", e)
     }
 }
 
@@ -583,7 +587,7 @@ const yearEndDrivers = async () => {
 
     }
     catch(e){
-        console.log("not working", e)
+        console.log("unable to find driver's championship end of season standings", e)
     }
 }
 
@@ -635,6 +639,6 @@ const yearEndConstructors = async () => {
         }
     }   
     catch(e){
-        console.log("not working", e)
+        console.log("unable to find constructor's championship end of season standings", e)
     }
 }
