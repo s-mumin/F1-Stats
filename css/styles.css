@@ -26,6 +26,11 @@ a:hover{
 }
 
 /* navbar */
+
+.navbar{
+    margin: 0;
+}
+
 .navbar-brand{
     margin-left: 20px;
 }
@@ -123,5 +128,25 @@ footer{
 #footer-links{
     list-style: none;
     margin-left: 20px;
+}
+
+/* mobile view */
+
+@media (max-width: 800px) {
+    .title{
+        font-size: 1rem;
+    }
+    table{
+        font-size: 0.75rem;
+    }
+    #title-info{
+        font-size: 0.75rem;
+    }
+    .column{
+        margin: 0;
+    }
+    #livestats{
+        margin-left: 30px;
+    }
 }
 
